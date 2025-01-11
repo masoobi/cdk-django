@@ -83,12 +83,13 @@ export class AdHocApp extends Construct {
     props.assetsBucket.grantReadWrite(ecsRoles.ecsTaskRole);
 
     // Route53
-    const hostedZone = HostedZone.fromLookup(this, 'HostedZone', { domainName: props.domainName });
-    const cnameRecord = new CnameRecord(this, 'CnameApiRecord', {
-      recordName: stackName,
-      domainName: props.alb.loadBalancerDnsName,
-      zone: hostedZone,
-    });
+    // skip route 53 until domain is moved to Route53
+    // const hostedZone = HostedZone.fromLookup(this, 'HostedZone', { domainName: props.domainName });
+    // const cnameRecord = new CnameRecord(this, 'CnameApiRecord', {
+    //   recordName: stackName,
+    //   domainName: props.alb.loadBalancerDnsName,
+    //   zone: hostedZone,
+    // });
 
     // api service
     // const backendService =
@@ -189,6 +190,6 @@ export class AdHocApp extends Construct {
 
     // define stack output use for running the management command
     new CfnOutput(this, 'backendUpdateCommand', { value: backendUpdateTask.executionScript });
-    new CfnOutput(this, 'domainName', { value: cnameRecord.domainName });
+    // new CfnOutput(this, 'domainName', { value: cnameRecord.domainName });
   }
 }

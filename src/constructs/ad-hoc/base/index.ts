@@ -71,14 +71,14 @@ export class AdHocBase extends Construct {
     });
     this.databaseInstance = rdsInstance.rdsInstance;
 
-    // elasticache cluster
-    const elastiCacheCluster = new ElastiCacheCluster(this, 'ElastiCacheCluster', {
-      vpc: this.vpc,
-      appSecurityGroup: appSecurityGroup,
-    });
+    // // elasticache cluster
+    // const elastiCacheCluster = new ElastiCacheCluster(this, 'ElastiCacheCluster', {
+    //   vpc: this.vpc,
+    //   appSecurityGroup: appSecurityGroup,
+    // });
 
-    // get the elasticache cluster hostname
-    this.elastiCacheHostname = elastiCacheCluster.elastiCacheHost;
+    // // get the elasticache cluster hostname
+    // this.elastiCacheHostname = elastiCacheCluster.elastiCacheHost;
 
   }
 }

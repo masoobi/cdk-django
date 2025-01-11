@@ -25,7 +25,7 @@ export class RdsInstance extends Construct {
     const stackName = Stack.of(this).stackName;
 
     // set instance type from props
-    this.instanceClass = props.instanceClass ?? 't3';
+    this.instanceClass = props.instanceClass ?? 't4g';
     this.instanceSize = props.instanceSize ?? 'micro';
     const instanceType = new InstanceType(`${this.instanceClass}.${this.instanceSize}`);
 
@@ -52,7 +52,7 @@ export class RdsInstance extends Construct {
     const rdsInstance = new DatabaseInstance(this, 'RdsInstance', {
       instanceIdentifier: `${stackName}RdsInstance`,
       vpc: props.vpc,
-      engine: DatabaseInstanceEngine.postgres({ version: PostgresEngineVersion.of('16.1', '16') }),
+      engine: DatabaseInstanceEngine.postgres({ version: PostgresEngineVersion.of('17.2', '17') }),
       credentials: Credentials.fromSecret(secret),
       instanceType,
       port: 5432,

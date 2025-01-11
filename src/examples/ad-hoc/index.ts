@@ -29,21 +29,21 @@ const domainName = process.env.DOMAIN_NAME || 'example.com';
 
 const adHocBase = new AdHocBase(baseStack, 'AdHocBase', { certificateArn, domainName });
 
-const adHocApp = new AdHocApp(appStack, 'AdHocApp', {
-  baseStackName: adHocBaseEnvName,
-  vpc: adHocBase.vpc,
-  alb: adHocBase.alb,
-  appSecurityGroup: adHocBase.appSecurityGroup,
-  rdsInstance: adHocBase.databaseInstance,
-  assetsBucket: adHocBase.assetsBucket,
-  domainName: adHocBase.domainName,
-  listener: adHocBase.listener,
-  elastiCacheHost: adHocBase.elastiCacheHostname,
-});
+// const adHocApp = new AdHocApp(appStack, 'AdHocApp', {
+//   baseStackName: adHocBaseEnvName,
+//   vpc: adHocBase.vpc,
+//   alb: adHocBase.alb,
+//   appSecurityGroup: adHocBase.appSecurityGroup,
+//   rdsInstance: adHocBase.databaseInstance,
+//   assetsBucket: adHocBase.assetsBucket,
+//   domainName: adHocBase.domainName,
+//   listener: adHocBase.listener,
+//   elastiCacheHost: adHocBase.elastiCacheHostname,
+// });
 
 /**
  * Add tagging for this construct and all child constructs
  */
 Tags.of(adHocBase).add('base-env', adHocBaseEnvName);
 Tags.of(adHocBase).add('ad-hoc', 'true');
-Tags.of(adHocApp).add('app-env', adHocAppEnvName);
+// Tags.of(adHocApp).add('app-env', adHocAppEnvName);
